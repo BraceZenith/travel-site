@@ -67,102 +67,102 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// Goal
-
-// console.log("Hello, my name is John Doe and my favorite color is blue.");
-// console.log("Hello, my name is Jane Smith and my favorite color is green.");
+"use strict";
 
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-// First iteration
+var _Person2 = __webpack_require__(1);
 
-// function person(name, favColor) {
-// 	console.log("Hello, my name is " + name + " and my favorite color is " + favColor + ".");
-// }
+var _Person3 = _interopRequireDefault(_Person2);
 
-// person("John Doe", "blue");
-// person("Jane Smith", "green");
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-// Second iteration
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// function person(name, favColor) {
-// 	console.log("Hello, my name is " + name + " and my favorite color is " + favColor + ".");
-// }
+var $ = __webpack_require__(2);
+// Node.js way
+// var Person = require('./modules/Person');
 
-// var johnName = "John Doe";
-// var johnFavColor = "blue";
+// ES6 way
 
-// person(johnName, johnFavColor);
-// person("Jane Smith", "green");
+var Adult = function (_Person) {
+	_inherits(Adult, _Person);
 
+	function Adult() {
+		_classCallCheck(this, Adult);
 
+		return _possibleConstructorReturn(this, (Adult.__proto__ || Object.getPrototypeOf(Adult)).apply(this, arguments));
+	}
 
-// Third iteration
+	_createClass(Adult, [{
+		key: 'payTaxes',
+		value: function payTaxes() {
+			console.log(this.name + " now owes $0 in taxes.");
+		}
+	}]);
 
-// function person(name, favColor) {
-// 	console.log("Hello, my name is " + name + " and my favorite color is " + favColor + ".");
-// }
-
-// var john = {
-// 	name: "John Doe",
-// 	favoriteColor: "blue"
-// }
-
-// person(john.name, john.favoriteColor);
-// person("Jane Smith", "green");
-
-
-
-// Fourth iteration
-
-// var john = {
-// 	name: "John Doe",
-// 	favoriteColor: "blue",
-// 	greet: function() {
-// 		console.log("Hello, my name is " + john.name + " and my favorite color is " + john.favoriteColor + ".");
-// 	}
-// }
-
-// john.greet();
-
-
-
-// Fifth and final iteration
-
-// function Person(fullName, favColor) {
-// 	this.name = fullName;
-// 	this.favoriteColor = favColor;
-// 	this.greet = function() {
-// 		console.log("Hello, my name is " + this.name + " and my favorite color is " + this.favoriteColor + ".");
-// 	}
-// }
-
-// var john = new Person("John Doe", "blue");
-// john.greet();
-
-// var jane = new Person("Jane Smith", "green");
-// jane.greet();
-
-
-
-// Modules
-var $ = __webpack_require__(1);
-var Person = __webpack_require__(2);
+	return Adult;
+}(_Person3.default);
 
 alert("ABC 321");
 
-var john = new Person("John Doe", "blue");
+var john = new _Person3.default("John Doe", "blue");
 john.greet();
 
-var jane = new Person("Jane Smith", "green");
+var jane = new Adult("Jane Smith", "orange");
 jane.greet();
+jane.payTaxes();
 
 $("h1").remove();
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Person = function () {
+	function Person(fullName, favColor) {
+		_classCallCheck(this, Person);
+
+		this.name = fullName;
+		this.favoriteColor = favColor;
+	}
+
+	_createClass(Person, [{
+		key: "greet",
+		value: function greet() {
+			console.log("Hi there, my name is " + this.name + " and my favorite color is " + this.favoriteColor + ".");
+		}
+	}]);
+
+	return Person;
+}();
+
+// Node.js way
+// module.exports = Person;
+
+// ES6 way
+
+
+exports.default = Person;
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -10420,20 +10420,6 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-function Person(fullName, favColor) {
-	this.name = fullName;
-	this.favoriteColor = favColor;
-	this.greet = function() {
-		console.log("Hello, my name is " + this.name + " and my favorite color is " + this.favoriteColor + ".");
-	}
-}
-
-module.exports = Person;
 
 /***/ })
 /******/ ]);
