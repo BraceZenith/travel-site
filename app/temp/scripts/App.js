@@ -11266,6 +11266,7 @@ var StickyHeader = function () {
 	function StickyHeader() {
 		_classCallCheck(this, StickyHeader);
 
+		this.lazyImages = (0, _jquery2.default)(".lazyload");
 		this.siteHeader = (0, _jquery2.default)(".site-header");
 		this.headerTriggerElement = (0, _jquery2.default)(".large-hero__title");
 		this.createHeaderWaypoint();
@@ -11273,9 +11274,22 @@ var StickyHeader = function () {
 		this.headerLinks = (0, _jquery2.default)(".primary-nav a");
 		this.createPageSectionWaypoints();
 		this.addSmoothScrolling();
+		this.refreshWaypoints();
 	}
 
 	_createClass(StickyHeader, [{
+		key: 'refreshWaypoints',
+		value: function refreshWaypoints() {
+			this.lazyImages.on('load', function () {
+				Waypoint.refreshAll();
+			});
+		}
+		// Why Waypoints don't need to be refreshed in other modules using it as well?
+		// Answer: Waypoints library doesn't actually import data the way standard ES6 module files do. All the Waypoints library does is attach an object named "Waypoint" to the web browser's global window scope.
+		// And because this object exists in web browser's global window scope, when we call it here, this isn't only being applied to the waypoints created in StickyHeader.js. This is actually refreshing all the waypoints that currently exist in web browser's memory.
+		// That's why we don't need to include the code to refresh waypoints in other modules where we are using it, in this case RevealOnScroll.js.
+
+	}, {
 		key: 'addSmoothScrolling',
 		value: function addSmoothScrolling() {
 			this.headerLinks.smoothScroll();
